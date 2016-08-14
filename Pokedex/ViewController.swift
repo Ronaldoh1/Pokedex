@@ -83,6 +83,16 @@ class ViewController: UIViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toPokemonDetails" {
+            if let detailsVC = segue.destinationViewController as? PokemonDetailVC {
+                if let pokemon = sender as? Pokemon {
+                    detailsVC.pokemon = pokemon
+                }
+            }
+        }
+    }
+    
 }
 
 extension ViewController: UISearchBarDelegate {
@@ -109,6 +119,10 @@ extension ViewController: UISearchBarDelegate {
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let pokemon = isInSearchMode ? filteredPokemons[indexPath.row] : pokemons[indexPath.row]
+       print(pokemon.name)
+        performSegueWithIdentifier("toPokemonDetails", sender: pokemon)
+            
         
     }
     
