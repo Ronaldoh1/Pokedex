@@ -11,8 +11,11 @@ import AVFoundation
 
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var pokemons = [Pokemon]()
+    var isInSearchMode = false
+    var filteredPokemons = [Pokemon]()
     var musicPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
@@ -20,6 +23,7 @@ class ViewController: UIViewController {
         
         initializeAudio()
         parsePokemonCSV()
+        searchBar.returnKeyType = .Done
         
     }
     
@@ -81,6 +85,27 @@ class ViewController: UIViewController {
     
 }
 
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            isInSearchMode = false
+            view.endEditing(true)
+            collectionView.reloadData()
+        } else {
+            isInSearchMode = true
+            let lower = searchBar.text?.lowercaseString
+            // check this pokemon object and grab it's property. Go through the array
+            filteredPokemons = pokemons.filter({ $0.name.rangeOfString(lower!) != nil})
+            collectionView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+}
+
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -101,13 +126,13 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemons.count
+        return isInSearchMode ? filteredPokemons.count : pokemons.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokeCell", forIndexPath: indexPath) as? PokeCell {
             
-            let pokemon = pokemons[indexPath.row]
+            let pokemon = isInSearchMode ? filteredPokemons[indexPath.row] : pokemons[indexPath.row]
             cell.configureCell(pokemon)
             
             return cell

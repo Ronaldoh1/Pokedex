@@ -61,7 +61,10 @@
                             </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="EaH-vv-1jA">
                                 <rect key="frame" x="0.0" y="55" width="414" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="sGW-hj-dAX" id="Idg-cr-82W"/>
+                                </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Skx-hS-VNp">
                                 <rect key="frame" x="20" y="119" width="374" height="597"/>
@@ -139,6 +142,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="collectionView" destination="Skx-hS-VNp" id="KYL-Rd-4yW"/>
+                        <outlet property="searchBar" destination="EaH-vv-1jA" id="VPu-YT-GWe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6y-ti-zF8" sceneMemberID="firstResponder"/>
