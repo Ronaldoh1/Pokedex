@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PokemonDetailVC: UIViewController {
     
@@ -31,6 +32,14 @@ class PokemonDetailVC: UIViewController {
         //pokemonName.text = pokemon.name
 
         // Do any additional setup after loading the view.
+        
+        mainImage.image = UIImage(named: "\(pokemon.pokedexId)")
+        
+        pokemon.downloadPokemonDetail { 
+            // this will be called after download is done. 
+            
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
