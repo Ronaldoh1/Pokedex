@@ -106,7 +106,7 @@ extension ViewController: UISearchBarDelegate {
             isInSearchMode = true
             let lower = searchBar.text?.lowercaseString
             // check this pokemon object and grab it's property. Go through the array
-            filteredPokemons = pokemons.filter({ $0.name.rangeOfString(lower!) != nil})
+            filteredPokemons = pokemons.filter({ $0.name!.rangeOfString(lower!) != nil})
             collectionView.reloadData()
         }
     }

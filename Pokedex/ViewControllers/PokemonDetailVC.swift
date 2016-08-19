@@ -41,6 +41,36 @@ class PokemonDetailVC: UIViewController {
         if let description = pokemon.description {
             self.descriptionLabel.text = description
         }
+        
+        if let weight = pokemon.weight {
+            self.weightLabel.text = weight
+        }
+        
+        if let defense = pokemon.defense {
+            self.defenseLabel.text = defense
+        }
+        
+        if let height = pokemon.height {
+            self.heightLabel.text = height
+        }
+        
+        if let baseAttack = pokemon.attack {
+            self.baseAttackLabel.text = baseAttack
+        }
+        
+
+            self.pokedexIdLabel.text = String(pokemon.pokedexId)
+        
+        
+        if let type = pokemon.type {
+            self.typeLabel.text = type
+        }
+        
+        if let nextEvolution = pokemon.nextEvolutionLevel {
+            self.nextEvolutionLabel.text = nextEvolution
+        }
+        
+        
     }
     
 

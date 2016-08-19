@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pokedex/Model/Pokemon.swift"
-            timestampString = "493014861.548972"
+            filePath = "Pokedex/View/PokeCell.swift"
+            timestampString = "493190584.394965"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "downloadPokemonDetail(_:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "configureCell(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

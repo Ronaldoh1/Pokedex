@@ -22,9 +22,9 @@ class Pokemon {
     private var _nextEvolutionId: String!
     private var _nextEvolutionLevel: String!
     
-    private var _pokemonUrl: String!
+    private var _pokemonUrl: String?
     
-    var name: String {
+    var name: String? {
         return _name
     }
     
@@ -32,39 +32,39 @@ class Pokemon {
         return _pokedexId
     }
     
-    var description: String {
+    var description: String? {
         return _description
     }
     
-    var type: String {
+    var type: String? {
         return _type
     }
     
-    var defense: String {
+    var defense: String? {
         return _defense
     }
     
-    var height: String {
+    var height: String? {
         return _height
     }
     
-    var weight: String {
+    var weight: String? {
         return _weight
     }
     
-    var nextEvolution: String {
+    var nextEvolution: String? {
         return _nextEvolutionText
     }
     
-    var nextEvolutionLevel: String {
+    var nextEvolutionLevel: String? {
         return _nextEvolutionLevel
     }
     
-    var nextEvolutionId: String {
+    var nextEvolutionId: String? {
         return _nextEvolutionId
     }
     
-    var attack: String {
+    var attack: String? {
         return _attack
     }
     
@@ -76,7 +76,7 @@ class Pokemon {
     }
     
     func downloadPokemonDetail(completed: DownloadComplete) {
-        let url = NSURL(string: _pokemonUrl)!
+        let url = NSURL(string: _pokemonUrl!)!
         
         Alamofire.request(.GET, url).responseJSON { response in
             let result  = response.result
